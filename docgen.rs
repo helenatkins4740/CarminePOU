@@ -11,7 +11,6 @@ pub const LANG_SUPPORT_MD_OUTPUT: &str = "lang-support.md";
 
 fn md_table_heading(cols: &[String]) -> String {
     let mut header = String::new();
-    header += &md_table_row(cols);
     header += &md_table_row(&vec!["---".to_string(); cols.len()]);
     header
 }
@@ -62,7 +61,6 @@ pub fn lang_features() -> Result<String, DynError> {
     cols.push("Default LSP".to_owned());
 
     md.push_str(&md_table_heading(&cols));
-    let config = helpers::lang_config();
 
     let mut langs = config
         .language
